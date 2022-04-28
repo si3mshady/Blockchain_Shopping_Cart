@@ -18,8 +18,7 @@ const Header = () => {
           type="text" placeholder="Search" />
           </Navbar.Text>
 
-
-          <Nav>
+<Nav>
           <Dropdown alignRight>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <FaShoppingCart color="white" fontSize="25px" />

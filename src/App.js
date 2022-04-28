@@ -1,8 +1,8 @@
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import Cart from './components/Cart/Cart'
-
 import './App.css';
+
 import {BrowserRouter, Routes,Route} from 'react-router-dom'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
       </Route>
 
-      <Route path='/cart' exact element={  <Cart/>}>
+      <Route path='/cart' exact element={<Cart/>}>
 
       </Route>
 
