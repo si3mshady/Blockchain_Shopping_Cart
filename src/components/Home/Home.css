@@ -1,0 +1,11 @@
+.home {
+    display: flex;
+    background-color: orange;
+}
+
+.productContainer {
+    width: 78%;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

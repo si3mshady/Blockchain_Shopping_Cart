@@ -4,7 +4,11 @@ import {data} from './MasterWineList.js'
 
 const Cart = createContext();
 
+const random_bool = [true,false]
 
+
+const getRandomIndex = () => {
+  return Math.floor(Math.random() * random_bool.length)}
 
 const Context = ({children}) => 
 
@@ -12,19 +16,18 @@ const Context = ({children}) =>
     {
      name: e.Name,
      image: e.URL,
-     price: e.Price,     
-     ratings: e.Rating,
-     year: e.Year    
-
+     ratings: Math.trunc(e.Rating),
+     year: e.Year, 
+     inStock: random_bool[getRandomIndex()]
     }
   ));
 
-  // console.log(results)
-
+  
+console.log(getRandomIndex())
 
 
   const [state,dispatch] = useReducer(cartReducer, {
-    products: results,
+    products: results.slice(0,20),
     cart: []
   })
 
