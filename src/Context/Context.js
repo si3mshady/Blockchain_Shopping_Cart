@@ -19,7 +19,7 @@ const Context = ({children}) =>
      name: e.Name,
      image: e.URL,
      ratings: Math.trunc(e.Rating), 
-     price: e.Price,
+     price: Math.trunc(e.Price),
      country: e.Country,
      year: e.Year, 
      inStock: random_bool[getRandomIndex()]

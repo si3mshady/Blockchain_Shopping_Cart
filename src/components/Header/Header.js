@@ -1,6 +1,7 @@
 import {Container, Badge, Navbar, Dropdown,Nav, Button, Form} from 'react-bootstrap'
 import './Header.css'
 import React from 'react'
+import {AiFillDelete} from 'react-icons/ai'
 import {FaShoppingCart} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {CartState} from "../../Context/Context"
@@ -30,9 +31,40 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                {cart.length > 0 ? (
+                  <>
+                  {cart.map( (p,i) => (
+                     
+                    
+                    <span className="cartItem">
+                      
+                      <img className="cartItemImage" key={i} src={p.image} />
+                      <div className="cartItemDetail">
+                        <span> {p.name} </span>
+                        <span>${p.price}</span>
+                      </div>
+                      <AiFillDelete 
+                      fontSize={20}
+                      style={{cursor:"pointer"}}
+                      onClick={() => dispatch({
+                        type: "REMOVE_FROM_CART",
+                        payload: p
+                      })}
+                  
+                      
+                      />
+                    </span>
+                    
+                 
+                  )) }
+                  {/* <Link to="/cart">
+                    <Button style={{width: "95%"}}>
+                      Go to Cart
+                    </Button>
+                  </Link> */}
+                  </>
+                )
+                :(<span>Cart is Empty!</span>)}
                 </Dropdown.Menu>
                 </Dropdown>
           </Nav>
