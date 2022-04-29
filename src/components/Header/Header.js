@@ -1,12 +1,14 @@
-import {Container, Navbar, Dropdown,Nav, Button, Form} from 'react-bootstrap'
+import {Container, Badge, Navbar, Dropdown,Nav, Button, Form} from 'react-bootstrap'
 import './Header.css'
-
+import React from 'react'
 import {FaShoppingCart} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import {CartState} from "../../Context/Context"
 
 const Header = () => {
-
-  return (
+ 
+  const {state: {cart}, dispatch} = CartState()
+    return (
     <Navbar bg="dark" variant="dark" style={{height: "80px"}}>
         <Container>
           <Navbar.Brand>
@@ -18,10 +20,13 @@ const Header = () => {
           type="text" placeholder="Search" />
           </Navbar.Text>
 
-<Nav>
+
+
+          <Nav>
           <Dropdown alignRight>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <FaShoppingCart color="white" fontSize="25px" />
+                <Badge>{cart.length}</Badge>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

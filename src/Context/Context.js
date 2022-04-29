@@ -15,6 +15,7 @@ const Context = ({children}) =>
 
 {  const results = data.map(e => (
     {
+    id: e.ID,
      name: e.Name,
      image: e.URL,
      ratings: Math.trunc(e.Rating), 

@@ -8,4 +8,11 @@
 .card-img-top {
    height: 70vh;
    object-fit:contain;
+   /* object-fit: scale-down; */
 }  
+
+
+.card {
+    min-width: 30%;
+    /* max-height: 1186px; */
+}
