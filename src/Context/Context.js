@@ -1,6 +1,6 @@
 
 import { useReducer,createContext, useContext } from "react"
-import {cartReducer} from './Reducer'
+import {filterReducer,cartReducer} from './Reducer'
 import {data} from './MasterWineList.js'
 
 const Cart = createContext();
@@ -35,7 +35,15 @@ console.log(getRandomIndex())
     cart: []
   })
 
-  return <Cart.Provider value={{state,dispatch}}>{children}</Cart.Provider>
+  const [filterState, filterDispatch ] = useReducer(filterReducer, {
+    year: 0,
+    rating: 0,
+    searchQuery: "",
+    inStock: false,
+    price: 0
+  })
+
+  return <Cart.Provider value={{state,dispatch, filterDispatch, filterState}}>{children}</Cart.Provider>
 
 }
 
