@@ -16,7 +16,7 @@ export default function Filters() {
 
   return (
     <div className='filters'> 
-    <span className='title'>Filter Products</span>
+    <h2 className='title'>Filter Products</h2>
 
     <span>
     <Form.Check
