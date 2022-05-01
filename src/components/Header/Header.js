@@ -3,6 +3,7 @@ import './Header.css'
 import React from 'react'
 import {AiFillDelete} from 'react-icons/ai'
 import {FaShoppingCart} from 'react-icons/fa'
+import {GiWineBottle} from 'react-icons/gi'
 import {Link} from 'react-router-dom'
 import {CartState} from "../../Context/Context"
 
@@ -14,7 +15,7 @@ const Header = () => {
         <Container>
           <Navbar.Brand>
 
-          <Link to="/"> ChainMart</Link>
+          <Link to="/"> <GiWineBottle size={82}/> </Link>
           </Navbar.Brand>
           <Navbar.Text className="search">
           <Form.Control className="m-auto" style={{width:300}}
@@ -55,13 +56,14 @@ const Header = () => {
                       />
                     </span>
                     
+                    
                  
                   )) }
-                  {/* <Link to="/cart">
-                    <Button style={{width: "95%"}}>
-                      Go to Cart
-                    </Button>
-                  </Link> */}
+
+                 
+                <Link to="/cart">
+                <Button className="cartButton">Go to Cart</Button>
+                  </Link> 
                   </>
                 )
                 :(<span>Cart is Empty!</span>)}
