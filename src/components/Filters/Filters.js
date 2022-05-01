@@ -101,6 +101,24 @@ export default function Filters() {
       />
 
     </span>
+
+  
+    <span>
+        <Form.Check
+        inline
+        type="checkbox"
+        name="group1"
+        id={"Year-desc"}
+        label="In Stock?"
+        onClick={ () => filterDispatch({
+          type: "SORT_BY_IN_STOCK"
+        })
+
+                 
+        }
+      />
+
+    </span>
     
     <span>
         <label style={{paddingRight: "10px"}}>Rating: </label>  
