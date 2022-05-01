@@ -28,7 +28,7 @@ export default function Filters() {
         type="radio"
         name="group1"
         label="Price Ascending"
-        id={"year-asc"}
+        id={"price-asc"}
         onChange={() => 
         filterDispatch({
           type: "SORT_BY_PRICE",
@@ -53,6 +53,8 @@ export default function Filters() {
           type: "SORT_BY_PRICE",
           payload: "highToLow"
         })}
+                
+    checked={sort === "highToLow" ? true: false}
       />
 
     </span>
@@ -64,6 +66,14 @@ export default function Filters() {
         name="group1"
         id={"year-asc"}
         label="Year Ascending"
+        onChange={() => 
+          filterDispatch({
+            type: "SORT_BY_YEAR",
+            payload: "lowToHigh"
+          })}
+          checked={year === "lowToHigh" ? true: false}
+
+      
       />
 
     </span>
@@ -75,6 +85,12 @@ export default function Filters() {
         name="group1"
         id={"Year-desc"}
         label="Year Descending"
+        onChange={() => 
+          filterDispatch({
+            type: "SORT_BY_YEAR",
+            payload: "highToLow"
+          })}
+          checked={year === "highToLow" ? true: false}
       />
 
     </span>

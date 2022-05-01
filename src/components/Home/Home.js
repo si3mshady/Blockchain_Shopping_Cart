@@ -25,6 +25,12 @@ filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = Ca
   if (inStock) {
     sortedProducts = sortedProducts.filter(element => element.inStock === true)
   }
+
+  if (year) {
+    sortedProducts = sortedProducts.sort((a,b) => 
+    year === "lowToHigh" ? Number(a.year) - Number(b.year) : Number(b.year) - Number(a.year) )
+  }
+  // console.log(products)
   
   return sortedProducts
   }
