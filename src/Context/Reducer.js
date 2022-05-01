@@ -7,11 +7,7 @@ export const cartReducer = (state, action) => {
 
         case "ADD_TO_CART":
             console.log('action_payload',action.payload)
-            return {...state, cart: [...state
-                
-                
-                
-                .cart, {...action.payload, qty: 1}]}
+            return {...state, cart: [...state.cart, {...action.payload, qty: 1}]}
 
         case "REMOVE_FROM_CART":
             console.log('action_payload',action.payload)
@@ -30,7 +26,8 @@ export const cartReducer = (state, action) => {
              return {...state, sort: action.payload}
 
         case "SORT_BY_YEAR":
-            return {...state, sort: action.payload}
+            return {...state, year: action.payload}
+
         case "SORT_BY_RATING":
             return {...state, rating: action.payload}
 

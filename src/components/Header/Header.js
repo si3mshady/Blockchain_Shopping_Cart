@@ -9,7 +9,7 @@ import {CartState} from "../../Context/Context"
 
 const Header = () => {
  
-  const {state: {cart}, dispatch} = CartState()
+  const {state: {cart}, dispatch, filterDispatch} = CartState()
     return (
     <Navbar bg="dark" variant="dark" style={{height: "80px"}}>
         <Container>
@@ -18,7 +18,15 @@ const Header = () => {
           <Link to="/"> <GiWineBottle size={82}/> </Link>
           </Navbar.Brand>
           <Navbar.Text className="search">
-          <Form.Control className="m-auto" style={{width:300}}
+          <Form.Control className="m-auto"
+           onChange={(e) => 
+            filterDispatch({
+              type: "FILTER_BY_SEARCH",
+              payload: e.target.value
+            })            
+           }
+          
+          style={{width:300}}
           type="text" placeholder="Search" />
           </Navbar.Text>
 

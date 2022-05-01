@@ -3,15 +3,19 @@ import './Filters.css'
 import Rating from '../Rating/Rating'
 
 import {Container, Navbar, Dropdown,Nav, Button, Form} from 'react-bootstrap'
+import { CartState } from '../../Context/Context'
 
 
 
 
 export default function Filters() {
   
-  const [rating, setRating] = React.useState(0)
+  // const [rating, setRating] = React.useState(0)
 
+  const {filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState() 
   
+ 
+  console.log(sort, searchQuery,inStock,price,year,rating)
 
 
   return (
@@ -23,32 +27,18 @@ export default function Filters() {
         inline
         type="radio"
         name="group1"
-        label="Year Ascending"
-        id={"year-asc"}
-      />
-
-
-    </span>
-
-    <span>
-           <Form.Check
-        inline
-        type="radio"
-        name="group1"
-        id={"year-desc"}
-        label="Year Descending"
-      />
-
-    </span>
-
-    <span>
-           <Form.Check
-        inline
-        type="radio"
-        name="group1"
-        id={"price-asc"}
         label="Price Ascending"
+        id={"year-asc"}
+        onChange={() => 
+        filterDispatch({
+          type: "SORT_BY_PRICE",
+          payload: "lowToHigh"
+        })}
+        
+        checked={sort === "lowToHigh" ? true: false}
+
       />
+
 
     </span>
 
@@ -59,6 +49,32 @@ export default function Filters() {
         name="group1"
         id={"price-desc"}
         label="Price Descending"
+        onChange={() => filterDispatch({
+          type: "SORT_BY_PRICE",
+          payload: "highToLow"
+        })}
+      />
+
+    </span>
+
+    <span>
+           <Form.Check
+        inline
+        type="radio"
+        name="group1"
+        id={"year-asc"}
+        label="Year Ascending"
+      />
+
+    </span>
+
+    <span>
+           <Form.Check
+        inline
+        type="radio"
+        name="group1"
+        id={"Year-desc"}
+        label="Year Descending"
       />
 
     </span>
@@ -89,11 +105,21 @@ export default function Filters() {
     <span>
         <label style={{paddingRight: "10px"}}>Rating: </label>  
         <Rating  rating={rating}
-        onClick={(i) => setRating(i + 1)}
+        // onClick={(i) => setRating(i + 1)} 
+        onClick ={(i) => 
+            filterDispatch({
+              type: "SORT_BY_RATING",
+              payload: i + 1
+            })
+        }
         style={{cursor: "pointer"}}   />
     </span>     
     
-    <Button>Clear Filters</Button>
+    <Button onClick={() => 
+      filterDispatch({
+        type: "CLEAR_FILTER"
+      })
+   }>Clear Filters</Button>
     
     
     </div>

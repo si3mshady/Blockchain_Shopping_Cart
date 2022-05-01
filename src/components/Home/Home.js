@@ -2,16 +2,36 @@ import { CartState } from "../../Context/Context"
 import SingleProduct from '../SingleProduct/SingleProduct'
 import Filters from '../Filters/Filters'
 import './Home.css'
+
+
+// const {filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState() 
+
+
 const Home = () => {
-  const { state: {products} } = CartState();
-  console.log(products)
+  const { state: {products},
+filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState() 
+
+
+  const transformedProducts = () => {
+
+  let sortedProducts = products
+
+  if (sort) {
+    sortedProducts = sortedProducts.sort((a,b) => 
+    sort === "lowToHigh" ? a.price - b.price : b.price - a.price )
+
+  }
+  
+  return sortedProducts
+  }
+  // console.log(products)
   return (
     <div className="home">
         <Filters />
 
         <div className="productContainer">
               { 
-                products.map((e,i) => {
+                transformedProducts().map((e,i) => {
                   return <SingleProduct key={i} value={e} /> 
                 })
               }
