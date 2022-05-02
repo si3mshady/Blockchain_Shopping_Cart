@@ -4,12 +4,12 @@ import Filters from '../Filters/Filters'
 import './Home.css'
 
 
-// const {filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState() 
+// const {filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState()
 
 
 const Home = () => {
   const { state: {products},
-filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState() 
+filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState()
 
 
   const transformedProducts = () => {
@@ -17,7 +17,7 @@ filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = Ca
   let sortedProducts = products
 
   if (sort) {
-    sortedProducts = sortedProducts.sort((a,b) => 
+    sortedProducts = sortedProducts.sort((a,b) =>
     sort === "lowToHigh" ? a.price - b.price : b.price - a.price )
 
   }
@@ -26,12 +26,17 @@ filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = Ca
     sortedProducts = sortedProducts.filter(element => element.inStock === true)
   }
 
-  if (year) {
-    sortedProducts = sortedProducts.sort((a,b) => 
-    year === "lowToHigh" ? Number(a.year) - Number(b.year) : Number(b.year) - Number(a.year) )
+  if (searchQuery) {
+    sortedProducts = sortedProducts.filter((element) =>  element.name.toLowerCase().includes(searchQuery)   )
   }
+
+  if (rating) {
+    sortedProducts = sortedProducts.filter(element => element.ratings === rating)
+  }
+
+
   // console.log(products)
-  
+
   return sortedProducts
   }
   // console.log(products)
@@ -40,9 +45,9 @@ filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = Ca
         <Filters />
 
         <div className="productContainer">
-              { 
+              {
                 transformedProducts().map((e,i) => {
-                  return <SingleProduct key={i} value={e} /> 
+                  return <SingleProduct key={i} value={e} />
                 })
               }
         </div>

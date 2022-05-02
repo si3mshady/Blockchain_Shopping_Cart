@@ -51,6 +51,8 @@ console.log(getRandomIndex())
     cart: []
   })
 
+  console.log(state)
+
   const [filterState, filterDispatch ] = useReducer(filterReducer, {
     year: 0,
     rating: 0,
