@@ -11,12 +11,12 @@ contract NFT is ERC721 {
     uint public tokens_created = 0;
     address buyer;
 
-    constructor(string memory winename) ERC721("Metaverse", "METT") {
+    constructor(string memory winename) ERC721("WINO", "WINO") {
         buyer = msg.sender;
         createToken(winename);
     }
 
-    function createToken  (string memory wineName)  public returns (uint256 ) {
+    function createToken  (string memory wineName) payable public returns (uint256 ) {
 
         uint256 newItemId = tokens_created += 1;
 
