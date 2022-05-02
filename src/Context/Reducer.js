@@ -14,7 +14,7 @@ export const cartReducer = (state, action) => {
             return {...state,
                 cart: state.cart.filter((c) => c.id !== action.payload.id )}
 
-        default: 
+        default:
             return state;
     }
  }
@@ -36,13 +36,13 @@ export const cartReducer = (state, action) => {
 
         case "FILTER_BY_SEARCH":
             return {...state, searchQuery: action.payload}
-        
+
         case "CLEAR_FILTER":
             return {
                 year: 0,
                 rating: 0,
                 searchQuery: "",
-                inStock: false
+                inStock: true
             }
 
          default:
