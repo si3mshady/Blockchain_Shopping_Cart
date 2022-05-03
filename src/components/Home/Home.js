@@ -1,10 +1,7 @@
 import { CartState } from "../../Context/Context"
 import SingleProduct from '../SingleProduct/SingleProduct'
 import Filters from '../Filters/Filters'
-import './Home.css'
-
-
-// const {filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = CartState()
+import './Home.css
 
 
 const Home = () => {
@@ -34,8 +31,6 @@ filterDispatch, filterState: {sort, searchQuery,inStock,price,year,rating}} = Ca
     sortedProducts = sortedProducts.filter(element => element.ratings === rating)
   }
 
-
-  // console.log(products)
 
   return sortedProducts
   }
